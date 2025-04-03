@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Cliente</title>
+    <!-- Importando o Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .content {
+            margin-left: 30px;
+            margin-right: 10px;
+            padding: 10px;
+            
+        }
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .header-bar {
+            background-color: #6f42c1;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .header-bar span {
+            font-weight: bold;
+        }
+        .client-info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .client-info-table td,
+        .client-info-table th {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+        .status-app {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+        }
+        .status-app input {
+            border-bottom: 2px dashed black;
+        }
+        .status-app label {
+            display: block;
+            margin-top: 10px;
+        }
+        .button-send {
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .button-send:hover {
+            background-color: #0b5ed7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content" class="container">
+        <!-- Barra superior -->
+        <div class="header-bar">
+            <span>INFO CLIENTE</span>
+        
+       
+        </div>
+
+        <!-- Informações do cliente -->
+        <div class="row">
+            <div class="col-6">
+                <table class="client-info-table" >
+                   <h1></h1> 
+                    <thead>
+                        
+                        <tr>
+                            <th>CLIENTE</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                      
+                        <tr>
+                            <td>{{ reclamacao.cliente }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BD:</strong> {{ reclamacao.bd }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VANTAGE:</strong> {{ reclamacao.vantage }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PROCEDÊNCIA:</strong> {{ reclamacao.procedencia }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ABERTURA:</strong> {{ reclamacao.abertura }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ENCERRAMENTO:</strong> {{ reclamacao.encerramento }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RECLAMAÇÃO:</strong> {{ reclamacao.reclamacao_status }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LP_13:</strong> {{ reclamacao.lp_13 }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CIDADE:</strong> {{ reclamacao.cidade }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CLUSTER:</strong> {{ reclamacao.cluster }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ENDEREÇO:</strong></td>
+                        </tr>
+                        <tr>
+                            <td>{{ reclamacao.endereco }}</td>
+                        </tr>
+                      
+                    </tbody>
+                   
+                </table>
+            </div>
+            <div class="col-6">
+                <!-- Informar Pós Contato -->
+               <!-- Formulário para informar pós contato e observações -->
+        <form action="{{ url_for('update', id=reclamacao.id) }}" method="POST">
+            <div class="mb-3">
+                <label for="pos_contato" class="form-label">INFORMAR PÓS CONTATO:</label>
+                <select id="pos_contato" name="pos_contato" class="form-select">
+                    <option value="OK">OK</option>
+                    <option value="NÃO OK">NÃO OK</option>
+                    <option value="SEM CONTATO">SEM CONTATO</option>
+                    <option value="JÁ POSSUI REPARO">JÁ POSSUI REPARO</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="observacao" class="form-label">OBSERVAÇÃO:</label>
+                <textarea id="observacao" name="observacao" class="form-control" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+            </div>
+        </div>
+
+        <!-- Botão Enviar -->
+     
+
+    <!-- Importando o Bootstrap JS (opcional, caso necessário) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
